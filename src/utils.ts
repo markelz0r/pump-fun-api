@@ -1,5 +1,7 @@
 export const average = (transactions, field) =>
-    transactions.reduce((sum, txn) => sum + txn[field], 0) / transactions.length;
+    transactions.length > 1
+        ? transactions.reduce((sum, txn) => sum + txn[field], 0) / transactions.length
+        : 0
 
 export const stdDev = (transactions, field) => {
     const avg = average(transactions, field);

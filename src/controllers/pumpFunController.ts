@@ -20,7 +20,6 @@ export async function getMint(req: Request, res: Response) {
         const coin: PumpCoin = await PumpCoinModel.findOne({ mint: mint }).lean();
         const transactions: PumpTransaction[] = await PumpTransactionModel.find({curve: coin.curve}).lean();
 
-
         const response: MintResponse = {
             mint: mint,
             avgPrice: average(transactions, 'price'),
